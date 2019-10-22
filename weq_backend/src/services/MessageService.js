@@ -1,4 +1,4 @@
-import { createMessage } from '../utils/message.utils'
+import Message from "../beans/Message";
 
 export default class MessageService {
   constructor(clientService) {
@@ -8,6 +8,6 @@ export default class MessageService {
 
   sendMessage(message, sender) {
     this.clientService.getClientsByTopic(message.topic)
-      .map(client => client.socket.send(createMessage(message, sender)));
+      .map(client => client.socket.send(new Message(message, sender).toString()));
   }
 }

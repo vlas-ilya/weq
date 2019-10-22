@@ -9,8 +9,9 @@ module.exports = {
   output: {
     path: path.join(__dirname, 'dist'),
     publicPath: '/',
-    filename: '[name].js'
+    filename: 'index.js'
   },
+  devtool: 'cheap-eval-source-map',
   target: 'node',
   externals: [
     nodeExternals()

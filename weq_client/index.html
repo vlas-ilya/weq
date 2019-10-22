@@ -1,40 +1,44 @@
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>WebSockets</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>WebSockets</title>
 </head>
 <body>
-    <div class="content">
-        <form name="updateClient">
-            <label for="name">Name: </label>
-            <input type="text" name="name" value="Tease" />
-            <br>
-            <label for="topics">Topics: </label>
-            <input type="text" name="topics" value="tests, ui" />
-            <br>
-            <input type="submit" value="Subscribe" />
-        </form>
+<div class="content">
+  <form name="connect">
+    <label for="connect_id">ID: </label>
+    <input type="text" name="id" value="" id="connect_id"/>
+    <br>
+    <input type="submit" value="Subscribe" />
+  </form>
 
-        <br>
+  <form name="updateClient">
+    <h4>Profile</h4>
+    <label for="updateClient_name">Name: </label>
+    <input type="text" name="name" value="Tease" id="updateClient_name"/>
+    <br>
+    <label for="updateClient_topics">Topics: </label>
+    <input type="text" name="topics" value="tests, ui" id="updateClient_topics" />
+    <br>
+    <input type="submit" value="Update" />
+  </form>
 
-        <form name="sendMessage">
-            <label for="topic">Topic: </label>
-            <input type="text" name="topic" value="tests" />
-            <br>
-            <label for="message">Message: </label>
-            <input type="text" name="message" value="hello world!" />
-            <br>
-            <input type="submit" value="Send" />
-        </form>
+  <form name="sendMessage">
+    <h4>Message</h4>
+    <label for="sendMessage_topic">Topic: </label>
+    <input type="text" name="topic" value="tests" id="sendMessage_topic" />
+    <br>
+    <label for="sendMessage_message">Message: </label>
+    <input type="text" name="message" value="hello world!" id="sendMessage_message" />
+    <br>
+    <input type="submit" value="Send" />
+  </form>
 
-        <br>
-
-        <div id="messages">
-
-        </div>
-    </div>
-    <script type="text/javascript" src="src/index.js"></script>
+  <div id="messages">
+    <h4>Messages</h4>
+  </div>
+</div>
 </body>
 </html>

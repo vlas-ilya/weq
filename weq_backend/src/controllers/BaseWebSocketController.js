@@ -5,11 +5,16 @@ export default class BaseWebSocketController {
     this.clientService = clientService;
     this.client = clientService.create(socket);
 
-    socket.on('message', this.onMessage);
-    socket.on('close', () => clientService.delete(this.client));
-
     this.onMessage = this.onMessage.bind(this);
     this.searchMethod = this.searchMethod.bind(this);
+    this.delete = this.delete.bind(this);
+
+    socket.on('message', this.onMessage);
+    socket.on('close', this.delete);
+  }
+
+  delete() {
+    this.clientService.delete(this.client);
   }
 
   onMessage(message) {
