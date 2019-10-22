@@ -1,42 +1,37 @@
-const uuid = require('uuid/v4');
-const Client = require('../beans/Client');
+import uuid from 'uuid/v4';
+import Client from '../beans/Client';
 
+export default class ClientsService {
+  constructor() {
+    this.clients = { };
+    this.getClientsByTopic = this.getClientsByTopic.bind(this);
+    this.create = this.create.bind(this);
+    this.update = this.update.bind(this);
+    this.delete = this.delete.bind(this);
+  }
 
-class ClientsService {
-    constructor() {
-        this.clients = { };
+  getClientsByTopic(topic) {
+    return Object.values(this.clients)
+      .filter(client => client.topics && client.topics.length > 0)
+      .filter(client => client.topics.includes(topic));
+  }
 
-        this.getClientsByTopic = this.getClientsByTopic.bind(this);
-        this.create = this.create.bind(this);
-        this.update = this.update.bind(this);
-        this.delete = this.delete.bind(this);
-    }
+  create(socket) {
+    const id = uuid();
+    const client = new Client(id, socket, null);
+    this.clients[id] = client;
+    return client;
+  }
 
-    getClientsByTopic(topic) {
-        return Object.values(this.clients)
-            .filter(client => client.topics && client.topics.length > 0)
-            .filter(client => client.topics.includes(topic));
-    }
-    
-    create(socket) {
-        const id = uuid();
-        const client = new Client(id, socket, null);
-        this.clients[id] = client;
-        return client;
-    }
+  update(date) {
+    const client = this.clients[date.id];
+    client.topics = date.topics;
+    client.name = date.name;
+    return client;
+  }
 
-    update(client) {
-        const persisted = this.clients[client.id];
-        persisted.topics = client.topics;
-        persisted.name = client.name;
-        return persisted;
-    }
-
-    delete(client) {
-        delete this.clients[client.id];
-        return client.id;
-    }
+  delete(date) {
+    delete this.clients[date.id];
+    return date.id;
+  }
 }
-
-
-module.exports = ClientsService;

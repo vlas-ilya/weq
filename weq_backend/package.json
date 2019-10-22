@@ -4,12 +4,21 @@
   "description": "Backend for websocket test project",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "rm -rf dist && webpack --mode development",
+    "start": "rm -rf dist && webpack --mode development && node ./dist/server.js"
   },
   "author": "tease",
   "license": "ISC",
   "dependencies": {
     "uuid": "^3.3.3",
     "ws": "^7.2.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.6.4",
+    "@babel/preset-env": "^7.6.3",
+    "babel-loader": "^8.0.6",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.9",
+    "webpack-node-externals": "^1.7.2"
   }
 }

@@ -1,14 +1,10 @@
 class Client {
-    constructor(id, socket, info) {
-        this.id = id;
-        this.socket = socket;
-        this.info = info;
-    }
-
-    send(message) {
-        this.socket.send(message);
-    }
+  constructor(id, socket, topics, name) {
+    this.id = id;
+    this.socket = socket;
+    this.topics = topics;
+    this.name = name;
+  }
 }
 
 module.exports = Client;
-
