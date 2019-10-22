@@ -1,0 +1,40 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>WebSockets</title>
+</head>
+<body>
+    <div class="content">
+        <form name="updateClient">
+            <label for="name">Name: </label>
+            <input type="text" name="name" value="Tease" />
+            <br>
+            <label for="topics">Topics: </label>
+            <input type="text" name="topics" value="tests, ui" />
+            <br>
+            <input type="submit" value="Subscribe" />
+        </form>
+
+        <br>
+
+        <form name="sendMessage">
+            <label for="topic">Topic: </label>
+            <input type="text" name="topic" value="tests" />
+            <br>
+            <label for="message">Message: </label>
+            <input type="text" name="message" value="hello world!" />
+            <br>
+            <input type="submit" value="Send" />
+        </form>
+
+        <br>
+
+        <div id="messages">
+
+        </div>
+    </div>
+    <script type="text/javascript" src="src/index.js"></script>
+</body>
+</html>
